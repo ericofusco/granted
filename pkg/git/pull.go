@@ -32,8 +32,8 @@ func PullRef(repoDirPath string, ref string, shouldSilentLogs bool) error {
 	}
 
 	// pull the repo here.
-	clio.Debugf("git -C %s pull %s %s\n", repoDirPath, "origin", pullRef)
-	cmd := exec.Command("git", "-C", repoDirPath, "pull", "origin", pullRef)
+	clio.Debugf("git -C %s pull %s %s %s\n", repoDirPath, "--recurse-submodules", "origin", pullRef)
+	cmd := exec.Command("git", "-C", repoDirPath, "pull", "--recurse-submodules", "origin", pullRef)
 
 	// StderrPipe returns a pipe that will be connected to the command's
 	// standard error when the command starts.

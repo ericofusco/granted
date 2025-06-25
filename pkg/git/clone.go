@@ -16,9 +16,9 @@ func Clone(repoURL string, repoDirPath string) error {
 
 // CloneWithRef wraps the command 'git clone' and checks out a specific ref.
 func CloneWithRef(repoURL string, repoDirPath string, ref string) error {
-	clio.Debugf("git clone --recurse-submodules=. %s\n", repoURL)
+	clio.Debugf("git clone --recurse-submodules %s\n", repoURL)
 
-	cmd := exec.Command("git", "clone", "--recurse-submodules=.", repoURL, repoDirPath)
+	cmd := exec.Command("git", "clone", "--recurse-submodules", repoURL, repoDirPath)
 
 	stderr, _ := cmd.StderrPipe()
 	if err := cmd.Start(); err != nil {
